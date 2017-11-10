@@ -1,7 +1,7 @@
 import fitbit from 'fitbit-livedata';
 
 export default (RED) => {
-  const FitbitLivedataNode = function FitbitLivedataNode(config) {
+  const FitbitLivedataLoginNode = function FitbitLivedataLoginNode(config) {
     RED.nodes.createNode(this, config);
     const node = this;
     this.on('input', (msg) => {
@@ -13,5 +13,5 @@ export default (RED) => {
       });
     });
   };
-  RED.nodes.registerType('livedata', FitbitLivedataNode);
+  RED.nodes.registerType('trackers', FitbitLivedataLoginNode);
 };
