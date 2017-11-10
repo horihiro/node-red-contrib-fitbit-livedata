@@ -5,12 +5,13 @@ export default (RED) => {
     RED.nodes.createNode(this, config);
     const node = this;
     this.on('input', (msg) => {
-      new Promise((resolve) => {
-        resolve(msg.payload.toLowerCase());
-      }).then((data) => {
-        msg.payload = data;
-        node.send(msg);
-      });
+      fitbit.addAccount(msg.payload.auth)
+        .then((trackers) => {
+          msg.payload = trackers;
+          node.send(msg);
+        }).catch((err) => {
+          node.send(msg);
+        });
     });
   };
   RED.nodes.registerType('trackers', FitbitLivedataLoginNode);
