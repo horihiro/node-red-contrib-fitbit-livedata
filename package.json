@@ -35,6 +35,6 @@
     "eslint-plugin-react": "^7.4.0"
   },
   "dependencies": {
-    "fitbit-livedata": "^0.0.1"
+    "fitbit-livedata": "file:../node-fitbit-livedata"
   }
 }

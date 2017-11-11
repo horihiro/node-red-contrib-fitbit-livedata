@@ -5,7 +5,7 @@ export default (RED) => {
     RED.nodes.createNode(this, config);
     const node = this;
     this.on('input', (msg) => {
-      fitbit.addAccount(msg.payload.auth)
+      fitbit.getTrackers(msg.payload.auth)
         .then((trackers) => {
           msg.payload = trackers;
           node.send(msg);
