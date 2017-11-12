@@ -49,7 +49,6 @@ export default (RED) => {
             tracker.connect();
           });
         }
-        console.log(msg.payload);
         fitbit.scanTrackers(msg.payload.trackers);
       } else if (msg.payload.action === 'disconnect') {
         const addresses = msg.payload.trackers && msg.payload.trackers.length > 0 ?
