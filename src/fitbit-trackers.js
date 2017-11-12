@@ -9,7 +9,8 @@ export default (RED) => {
         .then((trackers) => {
           msg.payload = trackers;
           node.send(msg);
-        }).catch((err) => {
+        }).catch(() => {
+          msg.payload = [];
           node.send(msg);
         });
     });
