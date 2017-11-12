@@ -58,7 +58,7 @@ export default (RED) => {
         trackers.filter(t =>
           addresses.indexOf(t.peripheral.address.toLowerCase()) >= 0).reduce((p, t) =>
           p.then(() => {
-            t.removeAllListeners('disconnect');
+            t.removeAllListeners('disconnected');
             t.on('disconnected', () => {
               const pos = trackers.map(i =>
                 i.peripheral.address.toLowerCase()).indexOf(t.peripheral.address.toLowerCase());
