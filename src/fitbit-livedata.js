@@ -18,6 +18,11 @@ export default (RED) => {
         node.status({ fill: 'blue', shape: 'ring', text: 'scanning...' });
       }
     });
+    this.on('close', () => {
+      // to-do disconnect trackers
+      trackers.reduce((p, t) =>
+        p.then(() => t.disconnect()), Promise.resolve());
+    });
     this.on('input', (msg) => {
       if (msg.payload.action === 'connect') {
         if (!isRegisted) {
